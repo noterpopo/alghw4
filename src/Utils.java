@@ -32,8 +32,8 @@ public class Utils {
     }
 
     public static double genS(String s1,String s2){
-        int res=lsc(s1,s2);
-        int len=min(s1.length(),s2.length());
+        double res=lsc(s1,s2);
+        double len=min(s1.length(),s2.length());
         return res/len;
     }
 
