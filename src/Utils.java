@@ -1,3 +1,6 @@
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import static java.lang.Math.max;
 import static java.lang.Math.min;
 
@@ -22,9 +25,25 @@ public class Utils {
     }
 
     public static String toCodeModule(String line){
+
+        Pattern pattern=Pattern.compile("//");
+        Matcher matcher=pattern.matcher(line);
+
+        if(matcher.find()){
+            line=line.substring(0,matcher.start());
+        }
+
+        if("".equals(line.trim()))
+        {
+            return "";
+        }
+
+
         StringBuffer result=new StringBuffer();
         for(int i=0;i<line.length();++i){
             if(Character.isLetterOrDigit(line.charAt(i))||Character.isWhitespace(line.charAt(i))){
+                result=result.append(line.charAt(i));
+            }else if(isAscii(line.charAt(i))){
                 result=result.append(line.charAt(i));
             }
         }
@@ -44,4 +63,21 @@ public class Utils {
             return 0;
         }
     }
+
+    private static boolean isAscii(char ch){
+        int c=(int)ch;
+        if(c>=33&&c<=47){
+            return true;
+        }else if(c>=58&&c<=64){
+            return true;
+        }else if (c>=91&&c<=96){
+            return true;
+        }else if (c>=123&&c<=126){
+            return true;
+        }else {
+            return false;
+        }
+    }
+
+
 }
