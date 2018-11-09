@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -63,6 +64,31 @@ public class Utils {
             return 0;
         }
     }
+
+    public static int getResult(int rowNum, int columnNum, ArrayList<Integer> DList){
+        int result[][]=new int[rowNum+1][columnNum+1];
+        for(int i=0;i<=rowNum;++i){
+            for(int j=0;j<=columnNum;++j){
+                if(i==0||j==0){
+                    result[i][j]=0;
+                }else if(DList.get((i-1)*rowNum+(j-1))==1){
+                    result[i][j]=result[i-1][j-1]+1;
+                }else {
+                    result[i][j]=max(result[i-1][j],result[i][j-1]);
+                }
+            }
+        }
+        for(int i=0;i<=rowNum;++i)
+        {
+            for(int j=0;j<=columnNum;++j){
+                System.out.print(result[i][j]);
+                System.out.print(" ");
+            }
+            System.out.println();
+        }
+        return result[rowNum][columnNum];
+    }
+
 
     private static boolean isAscii(char ch){
         int c=(int)ch;
