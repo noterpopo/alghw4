@@ -71,7 +71,7 @@ public class Utils {
             for(int j=0;j<=columnNum;++j){
                 if(i==0||j==0){
                     result[i][j]=0;
-                }else if(DList.get((i-1)*rowNum+(j-1))==1){
+                }else if(DList.get((i-1)*columnNum+(j-1))==1){
                     result[i][j]=result[i-1][j-1]+1;
                 }else {
                     result[i][j]=max(result[i-1][j],result[i][j-1]);
