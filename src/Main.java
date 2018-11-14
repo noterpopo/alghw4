@@ -11,7 +11,7 @@ public class Main {
         int columnNum=0;
         ArrayList<Integer> DList=new ArrayList<Integer>();
 
-        FileInputStream inputStream1=new FileInputStream("/home/popo/Desktop/alghw4/src/A0.c++");
+        FileInputStream inputStream1=new FileInputStream("/home/popo/Desktop/alghw4/src/A2.c++");
         BufferedReader bufferedReader1=new BufferedReader(new InputStreamReader(inputStream1));
         String line1=null;
         String line2=null;
@@ -20,7 +20,7 @@ public class Main {
             if("".equals(line1)){
                 continue;
             }
-            FileInputStream inputStream2=new FileInputStream("/home/popo/Desktop/alghw4/src/B0.c++");
+            FileInputStream inputStream2=new FileInputStream("/home/popo/Desktop/alghw4/src/B2.c++");
             BufferedReader bufferedReader2=new BufferedReader(new InputStreamReader(inputStream2));
             while ((line2=bufferedReader2.readLine())!=null){
                 line2=Utils.toCodeModule(line2);
